@@ -1,4 +1,8 @@
 module.exports = async (req, res) => {
+  // Always return CORS headers so Google Sheets / Browser fetch won't block
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET');
+
   const { platform, handle } = req.query;
 
   if (!platform || !handle) {
